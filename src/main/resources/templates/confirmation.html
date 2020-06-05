@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout" lang="en">
+    <body>
+        <div layout:fragment="content">
+            <table class="position-absolute w-100 h-100">
+                <tr>
+                    <td style="vertical-align:middle;">
+                        <div class="w-25 m-auto">
+                            <div class="card border-dark mb-3">
+                                <div class="card-header">Confirmation</div>
+                                <div class="card-body">
+                                    <h5 class="card-title" th:text="${'ID : '+ product.id}"></h5>
+                                    <h5 class="card-title" th:text="${'Designation : '+ product.designation}"></h5>
+                                    <h5 class="card-title" th:text="${'Total : '+(product.price * product.quantity)}"></h5>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            <script>
+                $(function(){
+                    $('ul.navbar-nav li').eq(2).addClass('active');
+                });
+            </script>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Product management</title>
+    <link href="/css/bootstrap.css" rel="stylesheet" type="text/css">
+</head>
+<body class="p-0 m-0">
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="/">Products Management</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/products">Products</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " href="/admin/form">Add product</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " href="/login?logout">Log out</a>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0" action="/products?page=0" method="GET">
+                <input name="mc" class="form-control mr-sm-2" type="search" placeholder="Keyword" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
+    <table class="position-absolute w-100 h-100">
+        <tr>
+            <td style="vertical-align:middle;" class="text-center">
+                <h1>Welcome to Products management</h1>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

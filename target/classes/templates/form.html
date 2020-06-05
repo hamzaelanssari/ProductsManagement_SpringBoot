@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+          xmlns:th="http://www.thymeleaf.org"
+          xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+          layout:decorator="layout" lang="en">
+    <body>
+        <div layout:fragment="content">
+            <table class="position-absolute w-100 h-100">
+                <tr>
+                    <td style="vertical-align:middle;">
+                        <div class="w-25 m-auto">
+                            <form th:action="${'/admin/save'}" method="post">
+                                <div th:object="${product}">
+                                    <div class="form-group">
+                                        <input type="hidden" name="_csrf" value="61390c32-08f8-4c85-b55afe20bc7f0913" />
+                                        <input class="form-control" type="hidden" name="id" th:value="*{id}"/>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label">Designation : </label>
+                                        <input class="form-control" type="text" name="designation" th:value="*{designation}"/>
+                                        <span class="valid-feedback d-block" th:errors="*{designation}"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label">Price : </label>
+                                        <input class="form-control" type="number" min="100" name="price" th:value="*{price}"/>
+                                        <span class="valid-feedback d-block" th:errors="*{price}"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label">Quantity : </label>
+                                        <input class="form-control" type="number" min="100" name="quantity" th:value="*{quantity}"/>
+                                        <span class="valid-feedback d-block" th:errors="*{quantity}"></span>
+                                    </div>
+                                    <div>
+                                        <input class="btn btn-primary" type="submit" value="Save"/>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            <script>
+                $(function(){
+                    $('ul.navbar-nav li').eq(2).addClass('active');
+                });
+            </script>
+        </div>
+    </body>
+</html>

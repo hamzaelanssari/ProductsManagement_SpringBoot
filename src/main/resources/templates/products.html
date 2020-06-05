@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout" lang="en">
+    <body>
+        <div layout:fragment="content">
+            <br/><br/><br/><br/><br/>
+            <div class="container">
+                <div class="card border-dark mb-3">
+                    <div class="card-header">List of products</div>
+                    <div>
+                        <table class="table table-striped">
+                            <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Designation</th>
+                                <th>Price</th>
+                                <th>Quantity</th>
+                                <th style="width: 70px;">#</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="p:${products.content}">
+                                <td th:text="${p.id}"></td>
+                                <td th:text="${p.designation}"></td>
+                                <td th:text="${p.price}"></td>
+                                <td th:text="${p.quantity}"></td>
+                                <td>
+                                    <a th:href='${"/admin/form?id="+p.id}' class="fa fa-edit"></a>&nbsp;
+                                    <a th:href="${'/admin/products/delete?id='+p.id}" class="fa fa-trash"></a>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <nav aria-label="Page navigation example">
+                            <ul class="pagination justify-content-end">
+                                <li th:class="${currentPage == 0}?'page-item disabled':'page-item'">
+                                    <a class="page-link" th:href="@{products(page=${currentPage - 1},mc=${mc})}" aria-label="Previous">
+                                        <span aria-hidden="true">&laquo;</span>
+                                    </a>
+                                </li>
+
+                                <li th:each="p:${pages}" th:class="(${currentPage==p}? 'page-item active': 'page-item')">
+                                    <a th:href="@{products(page=${p},mc=${mc})}" th:text="${p}" class="page-link"></a>
+                                </li>
+
+                                <li th:class="${currentPage == products.getTotalPages()-1}?'page-item disabled':'page-item'">
+                                    <a class="page-link" th:href="@{products(page=${currentPage + 1},mc=${mc})}" aria-label="Next">
+                                        <span aria-hidden="true">&raquo;</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <script>
+                $(function(){
+                    $('ul.navbar-nav li').eq(1).addClass('active');
+                });
+            </script>
+        </div>
+    </body>
+</html>
